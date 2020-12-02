@@ -20,3 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::view('/', 'chat')->middleware('auth');
+Route::resource('messages', 'MessageController')->only([
+    'index',
+    'store'
+]);
